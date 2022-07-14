@@ -18,25 +18,7 @@ create_folders() {
 panelConfig() {
   echo "Air-Universe $VERSION + Xray"
   echo "########Air-Universe config#######"
-  read -r -p "Enter panel domain(Include https:// or http://): " pUrl
-  read -r -p "Enter panel token: " nKey
   read -r -p "Enter node_ids, (eg 1,2,3): " nIds
-  echo && echo -e "Choose panel type:
-  1. SSPanel
-  2. V2board
-  3. Django-sspanel"
-  read -r -p "Choose panel type: " panelnum
-  if [ "$panelnum" == "1" ]; then
-    panelType="sspanel"
-  fi
-
-  if [ "$panelnum" == "2" ]; then
-      panelType="v2board"
-  fi
-
-  if [ "$panelnum" == "3" ]; then
-      panelType="django-sspanel"
-  fi
 
   IFS=', ' read -r -a id_arr <<< "$nIds"
 
@@ -243,16 +225,30 @@ makeConfig() {
   mkdir -p /usr/lib/systemd/system/
   cat >/usr/local/etc/au/au.json <<EOF
 {
+  "log": {
+    "log_level": "info"
+  },
   "panel": {
-    "type": "${panelType}",
-    "url": "${pUrl}",
-    "key": "${nKey}",
+    "type": "v2board",
+    "url": "https://datathaga.com",
+    "key": "4fCdmbVBjnVUByVC",
     "node_ids": [${nIds}],
     "nodes_type": [${nType}]
   },
   "proxy": {
-    "type":"xray"
-  }
+    "type": "xray",
+    "alter_id": 0,
+    "auto_generate": true,
+    "api_address": "127.0.0.1",
+    "api_port": 10085,
+    "force_close_tls": false,
+    "enable_sniffing": false,
+    "speed_limit_level": [0],
+    "log_path": "./v2.log",
+    "cert": {
+      "cert_path": "/path/to/certificate.crt",
+      "key_path": "/path/to/key.key"
+    }
 }
 EOF
 chmod 644 /usr/local/etc/au/au.json
