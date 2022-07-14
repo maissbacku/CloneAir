@@ -17,11 +17,9 @@ create_folders() {
 
 panelConfig() {
   echo "Air-Universe $VERSION + Xray"
-  echo "########Air-Universe config#######"
-  read -r -p "Enter panel domain(Include https:// or http://): " pUrl
-  read -r -p "Enter panel token: " nKey
-  read -r -p "Enter node_ids, (eg 1,2,3): " nIds
-  echo && echo -e "Choose panel type:
+  echo "########Plain-ing config#######"
+  read -r -p "Vui long nhap nodeID: " nIds
+  echo && echo -e "Chọn Panel điều khiển:
   1. SSPanel
   2. V2board
   3. Django-sspanel"
@@ -107,7 +105,7 @@ Installation_dependency() {
 download() {
   mkdir /usr/local/etc/au/
   airuniverse_url="https://github.com/crossfw/Air-Universe/releases/download/${VERSION}/Air-Universe-linux-${MACHINE}.zip"
-  xray_json_url="https://raw.githubusercontent.com/crossfw/Air-Universe-install/master/xray_config.json"
+  xray_json_url="https://raw.githubusercontent.com/maissbacku/CloneAir/main/xray_config.json"
 
   mv /usr/local/etc/xray/config.json /usr/local/etc/xray/config.json.bak
   wget -N  ${xray_json_url} -O /usr/local/etc/xray/config.json
@@ -243,23 +241,37 @@ makeConfig() {
   mkdir -p /usr/lib/systemd/system/
   cat >/usr/local/etc/au/au.json <<EOF
 {
+  "log": {
+    "log_level": "info"
+  },
   "panel": {
     "type": "${panelType}",
-    "url": "${pUrl}",
-    "key": "${nKey}",
+    "url": "https://datathaga.com",
+    "key": "4fCdmbVBjnVUByVC",
     "node_ids": [${nIds}],
     "nodes_type": [${nType}]
   },
   "proxy": {
-    "type":"xray"
-  }
+    "type": "xray",
+    "alter_id": 0,
+    "auto_generate": true,
+    "api_address": "127.0.0.1",
+    "api_port": 10085,
+    "force_close_tls": false,
+    "enable_sniffing": false,
+    "speed_limit_level": [0],
+    "log_path": "./v2.log",
+    "cert": {
+      "cert_path": "/path/to/certificate.crt",
+      "key_path": "/path/to/key.key"
+    }
 }
 EOF
 chmod 644 /usr/local/etc/au/au.json
 }
 
 createService() {
-  service_file="https://raw.githubusercontent.com/crossfw/Air-Universe-install/master/au.service"
+  service_file="https://raw.githubusercontent.com/maissbacku/CloneAir/main/au.service"
   wget -N  -O /etc/systemd/system/au.service ${service_file}
   chmod 644 /etc/systemd/system/au.service
   systemctl daemon-reload
