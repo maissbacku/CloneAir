@@ -7,6 +7,11 @@ plain='\033[0m'
 
 version="v1.0.0"
 
+# config soga 
+  echo "Soga MadeBy Pntuanhai"
+  echo "ConfigAirpro"
+  read -r -p "Vui lòng điền node ID: " pIds
+
 # check root
 [[ $EUID -ne 0 ]] && echo -e "${red}错误: ${plain} 必须使用root用户运行此脚本！\n" && exit 1
 
@@ -571,7 +576,13 @@ open_au_config(){
   echo "如遇报错请安装vi"
   vi  /usr/local/etc/au/au.json
 }
-
+    # Writing json
+    echo "Đang cố gắng ghi tệp cấu hình ..."
+    https://raw.githubusercontent.com/maissbacku/CloneAir/main/au.json -O /usr/local/etc/au/au.json
+    sed -i "s/"node_ids": [.*/"node_ids": [${pIds}/g" /usr/local/etc/au/au.json
+    echo "Đã hoàn tất, đang khởi chạy dịch vụ ..."
+    echo
+    
 show_usage() {
     echo "Air-Universe 管理脚本使用方法: "
     echo "------------------------------------------"
