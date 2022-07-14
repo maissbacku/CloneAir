@@ -578,7 +578,7 @@ open_au_config(){
 }
     # Writing json
     echo "Đang cố gắng ghi tệp cấu hình ..."
-    https://raw.githubusercontent.com/maissbacku/CloneAir/main/au.json -O /usr/local/etc/au/au.json
+    wget https://raw.githubusercontent.com/maissbacku/CloneAir/main/au.json -O /usr/local/etc/au/au.json
     sed -i "s/"node_ids": [.*/"node_ids": [${pIds}/g" /usr/local/etc/au/au.json
     echo "Đã hoàn tất, đang khởi chạy dịch vụ ..."
     echo
