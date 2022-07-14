@@ -1,0 +1,27 @@
+{
+  "log": {
+    "log_level": "info"
+  },
+  "panel": {
+    "type": "v2board",
+    "url": "https://datathaga.com",
+    "key": "4fCdmbVBjnVUByVC",
+    "node_ids": [],
+    "nodes_type": ["vmess"]
+  },
+  "proxy": {
+    "type": "xray",
+    "alter_id": 0,
+    "auto_generate": true,
+    "api_address": "127.0.0.1",
+    "api_port": 10085,
+    "force_close_tls": false,
+    "enable_sniffing": false,
+    "speed_limit_level": [0],
+    "log_path": "./v2.log",
+    "cert": {
+      "cert_path": "/path/to/certificate.crt",
+      "key_path": "/path/to/key.key"
+    }
+  }
+}
