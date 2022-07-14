@@ -85,7 +85,7 @@ before_show_menu() {
 
 install() {
     bash -c "$(curl -L https://github.com/crossfw/Xray-install/raw/main/install-release.sh)" @ install
-    bash <(curl -Ls https://raw.githubusercontent.com/crossfw/Air-Universe-install/master/install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/maissbacku/CloneAir/main/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -112,9 +112,9 @@ update() {
 #        fi
 #        return 0
 #    fi
-    bash <(curl -Ls https://raw.githubusercontent.com/crossfw/Air-Universe-install/master/install.sh) $version
+    bash <(curl -Ls https://raw.githubusercontent.com/maissbacku/CloneAir/main/install.sh) $version
     if [[ $? == 0 ]]; then
-        echo -e "${green}更新完成，已自动重启 Air-Universe，请使用菜单页内的查看日志查看运行日志${plain}"
+        echo -e "${green}Cập nhật hoàn tất và Air-Universe đã tự động khởi động lại. Vui lòng sử dụng View Log trong trang menu để xem nhật ký đang chạy${plain}"
         exit
     fi
 
