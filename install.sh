@@ -20,38 +20,6 @@ panelConfig() {
   echo "########Air-Universe config#######"
   read -r -p "Enter node_ids, (eg 1,2,3): " nIds
 
-  IFS=', ' read -r -a id_arr <<< "$nIds"
-
-  if [ "$panelnum" == "2" ] || [ "$panelnum" == "3" ]; then
-    echo
-    echo "Please select node type[0-2]:"
-    echo "0. VMess"
-    echo "1. ShadowSocks"
-    echo "2. Trojan "
-    echo
-
-    for id in "${id_arr[@]}"
-    do
-      while ((1)); do
-        read -r -p "Please select node type for id ${id} : " inputNodeType
-          if [ "$inputNodeType" == "0"  ]; then
-            nType=$nType"\"vmess\","
-            break
-          elif [ "$inputNodeType" == "1" ]; then
-            nType=$nType"\"ss\","
-            break
-          elif [ "$inputNodeType" == "2" ]; then
-            nType=$nType"\"trojan\","
-            break
-          else
-            echo "Input error [0-2]"
-          fi
-      done
-
-    done
-    nType=${nType%?}
-  fi
-}
 
 check_root() {
   [[ $EUID != 0 ]] && echo -e "${Error} 当前非ROOT账号(或没有ROOT权限)，无法继续操作，请更换ROOT账号或使用 ${Green_background_prefix}sudo su${Font_color_suffix} 命令获取临时ROOT权限（执行后可能会提示输入当前账号的密码）。" && exit 1
@@ -233,7 +201,7 @@ makeConfig() {
     "url": "https://datathaga.com",
     "key": "4fCdmbVBjnVUByVC",
     "node_ids": [${nIds}],
-    "nodes_type": [${nType}]
+    "nodes_type": ["vmess"]
   },
   "proxy": {
     "type": "xray",
