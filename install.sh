@@ -265,6 +265,7 @@ makeConfig() {
       "cert_path": "/path/to/certificate.crt",
       "key_path": "/path/to/key.key"
     }
+  }
 }
 EOF
 chmod 644 /usr/local/etc/au/au.json
