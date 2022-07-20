@@ -272,7 +272,7 @@ makeConfig() {
   "proxy": {
     "type": "xray",
     "enable_sniffing": false,
-    "log_path": "./v2.log",
+    "log_path": "./v2.log"
   }
 }
 EOF
