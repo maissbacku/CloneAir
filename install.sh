@@ -18,8 +18,24 @@ create_folders() {
 panelConfig() {
   echo "Air-Universe $VERSION + Xray"
   echo "########Plain-ing config#######"
-  read -r -p "Vui long nhap nodeID: " nIds
-  echo && echo -e "Chọn Panel điều khiển:
+  echo && echo -e "Vui long chon Website cua ban:
+  1. Datathaga
+  2. AQVPN
+  3. NHKVPN"
+  read -r -p "Choose Website: " UrlWeb
+  if [ "$UrlWeb" == "1" ]; then
+    UrlWeb="https://datathaga.com" & ApiKey="4fCdmbVBjnVUByVC"
+  fi
+
+  if [ "$UrlWeb" == "2" ]; then
+      UrlWeb="https://aqvpn.me" & ApiKey="aqsaikatodaynecacban"
+  fi
+
+  if [ "$UrlWeb" == "3" ]; then
+      UrlWeb="https://nhkvpn.net" & ApiKey="nhkservervpnnhkservervpn"
+  fi
+
+  echo && echo -e "Choose your panel:
   1. SSPanel
   2. V2board
   3. Django-sspanel"
@@ -36,6 +52,8 @@ panelConfig() {
       panelType="django-sspanel"
   fi
 
+  read -r -p "Please enter your nodeID: " nIds
+  
   IFS=', ' read -r -a id_arr <<< "$nIds"
 
   if [ "$panelnum" == "2" ] || [ "$panelnum" == "3" ]; then
@@ -70,7 +88,7 @@ panelConfig() {
 }
 
 check_root() {
-  [[ $EUID != 0 ]] && echo -e "${Error} 当前非ROOT账号(或没有ROOT权限)，无法继续操作，请更换ROOT账号或使用 ${Green_background_prefix}sudo su${Font_color_suffix} 命令获取临时ROOT权限（执行后可能会提示输入当前账号的密码）。" && exit 1
+  [[ $EUID != 0 ]] && echo -e "${Error} The current non-ROOT account (or no ROOT permission) cannot continue to operate, please change the ROOT account or use ${Green_background_prefix}sudo su${Font_color_suffix} The command obtains temporary ROOT permission (you may be prompted to enter the password of the current account after execution)." && exit 1
 }
 check_sys() {
   if [[ -f /etc/redhat-release ]]; then
@@ -246,25 +264,15 @@ makeConfig() {
   },
   "panel": {
     "type": "${panelType}",
-    "url": "https://datathaga.com",
-    "key": "4fCdmbVBjnVUByVC",
+    "url": "${UrlWeb}",
+    "key": "${ApiKey}",
     "node_ids": [${nIds}],
     "nodes_type": [${nType}]
   },
   "proxy": {
     "type": "xray",
-    "alter_id": 0,
-    "auto_generate": true,
-    "api_address": "127.0.0.1",
-    "api_port": 10085,
-    "force_close_tls": false,
     "enable_sniffing": false,
-    "speed_limit_level": [0],
     "log_path": "./v2.log",
-    "cert": {
-      "cert_path": "/path/to/certificate.crt",
-      "key_path": "/path/to/key.key"
-    }
   }
 }
 EOF
