@@ -575,18 +575,18 @@ open_au_config(){
 show_usage() {
     echo "Air-Universe 管理脚本使用方法: "
     echo "------------------------------------------"
-    echo "Air-Universe              - 显示管理菜单 (功能更多)"
-    echo "Air-Universe start        - 启动 Air-Universe"
-    echo "Air-Universe stop         - 停止 Air-Universe"
-    echo "Air-Universe restart      - 重启 Air-Universe"
-    echo "Air-Universe status       - 查看 Air-Universe 状态"
-    echo "Air-Universe enable       - 设置 Air-Universe 开机自启"
-    echo "Air-Universe disable      - 取消 Air-Universe 开机自启"
-    echo "Air-Universe log          - 查看 Air-Universe 日志"
-    echo "Air-Universe update x.x.x - 更新 Air-Universe 指定版本"
-    echo "Air-Universe install      - 安装 Air-Universe"
-    echo "Air-Universe uninstall    - 卸载 Air-Universe"
-    echo "Air-Universe version      - 查看 Air-Universe 版本"
+    echo "Air-Universe - show admin menu (more functions)"
+    echo "Air-Universe start - start Air-Universe"
+    echo "Air-Universe stop - stop Air-Universe"
+    echo "Air-Universe restart - restart Air-Universe"
+    echo "Air-Universe status - View Air-Universe status"
+    echo "Air-Universe enable - Set Air-Universe to auto-enable"
+    echo "Air-Universe disable - Cancel Air-Universe auto-start"
+    echo "Air-Universe log - View Air-Universe log"
+    echo "Air-Universe update x.x.x - update Air-Universe specified version"
+    echo "Air-Universe install - install Air-Universe"
+    echo "Air-Universe uninstall - uninstall Air-Universe"
+    echo "Air-Universe version - View Air-Universe version"
     echo "------------------------------------------"
 }
 
@@ -596,26 +596,25 @@ show_menu() {
 --- https://github.com/crossfw/Air-Universe ---
   ${green}0.${plain} 退出脚本
 ————————————————
-  ${green}1.${plain} 安装 Air-Universe
-  ${green}2.${plain} 使用ACME获取SSL证书
-  ${green}3.${plain} 卸载 Air-Universe
+  ${green}1.${plain} Install Air-Universe
+  ${green}2.${plain} Use ACME to get an SSL certificate
+  ${green}3.${plain} Uninstall Air-Universe
 ————————————————
-  ${green}4.${plain} 启动 Air-Universe
-  ${green}5.${plain} 停止 Air-Universe
-  ${green}6.${plain} 重启 Air-Universe
-  ${green}7.${plain} 查看 Air-Universe 状态
-  ${green}8.${plain} 查看 Air-Universe 日志
+  ${green}4.${plain} Start Air-Uni
+  ${green}5.${plain} Stop Air-Uni
+  ${green}6.${plain} Restart Air-Universe
+  ${green}7.${plain} View Air-Universe Status
+  ${green}8.${plain} View Air-Universe Log
 ————————————————
-  ${green}9.${plain} 设置 Air-Universe 开机自启
- ${green}10.${plain} 取消 Air-Universe 开机自启
-————————————————
- ${green}11.${plain} 一键安装 bbr (最新内核)
- ${green}12.${plain} 查看 Air-Universe & Xray 版本
- ${green}13.${plain} 升级Xray内核
- ${green}14.${plain} 升级Air-Universe
+  ${green}9.${plain} Set Air-Universe to start automatically
+ ${green}10.${plain} Cancel Air-Universe Auto Start
+ ${green}11.${plain} One-click install bbr (latest kernel)
+ ${green}12.${plain} View Air-Universe & Xray Versions
+ ${green}13.${plain} Upgrading the Xray kernel
+ ${green}14.${plain} Upgrade Air-Universe
  ————————————————
- ${green}15.${plain} 编辑Xray配置文件
- ${green}16.${plain} 编辑Air-Universe配置文件
+ ${green}15.${plain} Edit Xray configuration files
+ ${green}16.${plain} Editing Air-Uni Profiles
  "
  #后续更新可加入上方字符串中
     show_status
@@ -656,7 +655,7 @@ show_menu() {
         ;;
         16) check_install && open_au_config
         ;;
-        *) echo -e "${red}请输入正确的数字 [0-16]${plain}"
+        *) echo -e "${red}Please enter the correct number [0-16]${plain}"
         ;;
     esac
 }
