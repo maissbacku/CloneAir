@@ -24,15 +24,15 @@ panelConfig() {
   3. NHKVPN"
   read -r -p "Choose Website: " UrlWeb
   if [ "$UrlWeb" == "1" ]; then
-    UrlWeb="https://datathaga.com" & ApiKey="4fCdmbVBjnVUByVC"
+    UrlWeb="https://datathaga.com" && ApiKey="4fCdmbVBjnVUByVC"
   fi
 
   if [ "$UrlWeb" == "2" ]; then
-      UrlWeb="https://aqvpn.me" & ApiKey="aqsaikatodaynecacban"
+      UrlWeb="https://aqvpn.me" && ApiKey="aqsaikatodaynecacban"
   fi
 
   if [ "$UrlWeb" == "3" ]; then
-      UrlWeb="https://nhkvpn.net" & ApiKey="nhkservervpnnhkservervpn"
+      UrlWeb="https://nhkvpn.net" && ApiKey="nhkservervpnnhkservervpn"
   fi
 
   echo && echo -e "Choose your panel:
