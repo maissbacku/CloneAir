@@ -22,16 +22,16 @@ panelConfig() {
   1. Datathaga
   2. AQVPN
   3. NHKVPN"
-  read -r -p "Choose Website: " UrlWeb
-  if [ "$UrlWeb" == "1" ]; then
+  read -r -p "Choose Website: " panelSet
+  if [ "$panelSet" == "1" ]; then
     UrlWeb="https://datathaga.com" && ApiKey="4fCdmbVBjnVUByVC"
   fi
 
-  if [ "$UrlWeb" == "2" ]; then
+  if [ "$panelSet" == "2" ]; then
       UrlWeb="https://aqvpn.me" && ApiKey="aqsaikatodaynecacban"
   fi
 
-  if [ "$UrlWeb" == "3" ]; then
+  if [ "$panelSet" == "3" ]; then
       UrlWeb="https://nhkvpn.net" && ApiKey="nhkservervpnnhkservervpn"
   fi
 
