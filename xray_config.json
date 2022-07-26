@@ -12,7 +12,7 @@
   },
   "policy": {
     "levels": {
-      "1": {
+      "0": {
         "handshake": 1,
         "connIdle": 10000000,
         "uplinkOnly": 0,
