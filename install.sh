@@ -77,8 +77,11 @@ panelConfig() {
           elif [ "$inputNodeType" == "2" ]; then
             nType=$nType"\"trojan\","
             break
+          elif [ "$inputNodeType" == "3" ]; then
+            nType=$nType"\"vmess\",\"trojan\","
+            break
           else
-            echo "Input error [0-2]"
+            echo "Input error [0-3]"
           fi
       done
 
